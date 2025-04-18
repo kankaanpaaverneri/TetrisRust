@@ -74,6 +74,7 @@ pub fn start_game(audio: Option<&Audio>) -> std::io::Result<()> {
         while column != 0 {
             collapse_full_row(&mut board, &column);
             column = is_full_row(&board);
+            points += 1;
         }
         if game_over(&tetromino_positions) && tetrominos_dropped > 0 {
             print!("GAME OVER\r\n");
