@@ -1,7 +1,7 @@
 use std::time::{SystemTime, SystemTimeError, UNIX_EPOCH};
 
 pub const BLOCK: char = '#';
-pub const EMPTY: char = '_';
+pub const EMPTY: char = ' ';
 
 pub const TETROMINO_SIZE: usize = 4;
 

@@ -49,16 +49,13 @@ pub fn start_game(audio: Option<&Audio>) -> std::io::Result<()> {
             let prev_tetromino_positions = copy_tetromino_positions(&tetromino_positions);
             if !drop_tetromino(&mut tetromino_positions, &board) {
                 write_tetromino_to_board(&tetromino_positions, &mut board);
-                display_board(&board);
                 break;
             }
 
             clear_previous_tetromino_from_board(&prev_tetromino_positions, &mut board);
             write_tetromino_to_board(&tetromino_positions, &mut board);
-
+            execute!(std::io::stdout(), Clear(ClearType::FromCursorUp))?;
             display_board(&board);
-
-            execute!(std::io::stdout(), Clear(ClearType::FromCursorDown))?;
         }
         let mut column = is_full_row(&board);
         if column != 0 {
